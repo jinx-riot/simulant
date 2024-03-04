@@ -1,0 +1,56 @@
+import random
+
+class Organism:
+    def __init__(self, name, speed, reproduction_rate):
+        self.name = name
+        self.speed = speed
+        self.reproduction_rate = reproduction_rate
+
+    def move(self):
+        print(f"{self.name} moves at speed {self.speed}.")
+
+    def reproduce(self):
+        print(f"{self.name} reproduces at rate {self.reproduction_rate}.")
+
+class Herbivore(Organism):
+    def __init__(self, name, speed, reproduction_rate, herbivore_specific_property):
+        super().__init__(name, speed, reproduction_rate)
+        self.herbivore_specific_property = herbivore_specific_property
+
+    def eat_plant(self):
+        print(f"{self.name} eats plants. Specific property: {self.herbivore_specific_property}.")
+
+class Predator(Organism):
+    def __init__(self, name, speed, reproduction_rate, predator_specific_property):
+        super().__init__(name, speed, reproduction_rate)
+        self.predator_specific_property = predator_specific_property
+
+    def hunt_prey(self):
+        print(f"{self.name} hunts prey. Specific property: {self.predator_specific_property}.")
+
+class Plant(Organism):
+    def __init__(self, name, reproduction_rate, plant_specific_property):
+        super().__init__(name, 0, reproduction_rate)  # Plants don't move
+        self.plant_specific_property = plant_specific_property
+
+    def grow(self):
+        print(f"{self.name} grows. Specific property: {self.plant_specific_property}.")
+
+def main():
+    herbivore = Herbivore("Deer", 10, 0.7, "Antlers")
+    predator = Predator("Lion", 15, 0.5, "Sharp teeth")
+    plant = Plant("Grass", 0.5, "Green color")
+
+    herbivore.move()
+    herbivore.eat_plant()
+    herbivore.reproduce()
+
+    predator.move()
+    predator.hunt_prey()
+    predator.reproduce()
+
+    plant.grow()
+    plant.reproduce()
+
+if __name__ == "__main__":
+    main()
